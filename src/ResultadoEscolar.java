@@ -4,16 +4,29 @@ public class ResultadoEscolar {
     public static void main(String[] args) {
         
         // Criando as váriaveis
-        byte mediaNota, notaAluno1,notaAluno2,notaAluno3,notaAluno4,notaAluno5;
-        int notaMedia, pontosAtribuir,pontosAluno, userInput;
+        byte  notaAluno1,notaAluno2,notaAluno3,notaAluno4,notaAluno5;
+        int notaMedia, pontosAtribuir,pontosAluno, userInput, notaRecuperacao1, notaRecuperacao2;
+        int mN;
         String nomeAluno;
         // 
 
         pontosAluno = 0;
-        mediaNota = 6;
         
         Scanner scanner = new Scanner(System.in);
 
+        // Requisitos para para aprovação e recuperação
+
+        System.out.println("==============================");
+        System.out.print("Média para aprovção --> ");
+        mN = scanner.nextInt();
+
+        System.out.print("Nota minima para recuperção --> ");
+        notaRecuperacao1 = scanner.nextInt();
+
+        System.out.print("Nota maxima para recuperação");
+        notaRecuperacao2 = scanner.nextInt();
+        System.out.println("==============================");
+        
         // Recebendo a entrada das notas
         System.out.print("Nome do aluno --> ");
         nomeAluno = scanner.next();
@@ -35,7 +48,6 @@ public class ResultadoEscolar {
         notaAluno5 = scanner.nextByte();
         System.out.println("==============================");
 
-        scanner.close();
         // 
 
         // Calculando a média
@@ -43,15 +55,16 @@ public class ResultadoEscolar {
         // 
 
         // Condicionais
-        if(notaMedia >= mediaNota){
+        if(notaMedia >= mN){
             System.out.println("Aluno: " + nomeAluno + " -- > Aprovado");
             System.out.println("==============================");
 
-        }else if (notaMedia == mediaNota) {
-            System.out.println("Aluno: " + nomeAluno + "--> Na média, precisa estudar mais");
+        }else if (notaMedia >= notaRecuperacao1 && notaMedia <= notaRecuperacao2) {
+            System.out.println("Aluno: " + nomeAluno + "--> Prova de recuperção");
             System.out.println("==============================");
          
-        // Se cair nessa condição o código continua
+        
+            // Se cair nessa condição o código continua
         }else{
             System.out.println("Aluno: " + nomeAluno + "--> Reprovado");
             System.out.println("A média foi --> " + notaMedia);
@@ -87,7 +100,7 @@ public class ResultadoEscolar {
         System.out.println("==============================");
         int mediaMpontos = pontosAluno + notaMedia;
 
-        if(mediaMpontos >= mediaNota){
+        if(mediaMpontos >= mN){
             System.out.println("Aluno aprovado!");
         }else{
             System.out.println("Média final com pontos = " +  mediaMpontos);
